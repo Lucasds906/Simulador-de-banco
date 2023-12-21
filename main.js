@@ -109,7 +109,7 @@ seleccionarOpcion()
 // ***************** FUNCIONES******************
 
 function seleccionarOpcion() {
-    let menu = Number(prompt('1. Consultar saldo. 2. realizar un depósito. 3. Extraer dinero. 4. Ver productos de canje. 5. Canjear puntos. 5. Cerrar sesión.'))
+    let menu = Number(prompt('1. Consultar saldo. 2. realizar un depósito. 3. Extraer dinero. 4. Ver productos de canje. 5. Canjear puntos. 6. Cerrar sesión.'))
     if (menu == 1) {
         alert(`El saldo de tu cuenta es de $ ${saldo}`)
         let respuesta = confirm('Desea volver al menú anterior?')
@@ -150,26 +150,22 @@ function seleccionarOpcion() {
         } else {
             return
         }
-    } else if (menu = 4) {
+    } else if (menu == 4) {
         for (producto of productosDeCanje) {
             console.log(producto.info)
         }
         buscador = prompt('Para buscar un producto por categroía, escriba "celulares", "cocina", "hogar", "indumentaria", "tecnologia".')
-        
-        function buscarPorCategoria (productosDeCanje, categoria) {
-            return productosDeCanje.filter(producto => producto.categoria === categoria)
-        }
         let productosFiltrados = buscarPorCategoria(productosDeCanje, buscador)
-        for (items of productosFiltrados)
-        console.log(items.info)
-    //         let cat = productosDeCanje.filter((categoria)=> categoria.inlcudes(buscador))
-    //         console.log(cat)
-        
-    }
-    
-    
-    
-    else if (menu == 5) {
+        for (items of productosFiltrados) {
+            console.log(`**${items.info}**`)
+        }
+        let respuesta = confirm('Desea volver al menú anterior?')
+        if (respuesta) {
+            seleccionarOpcion()
+        } else {
+            return
+        }
+    } else if (menu == 5) {
         alert(`Llevas acumulados ${puntos} puntos`)
         for (productos in productosDeCanje) {
             if (puntos >= productosDeCanje[productos].puntos) {
@@ -205,3 +201,6 @@ function seleccionarOpcion() {
     }
 }
 
+function buscarPorCategoria(productosDeCanje, categoria) {
+    return productosDeCanje.filter(producto => producto.categoria === categoria)
+}
