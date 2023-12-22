@@ -2,7 +2,7 @@ let nombre = prompt('Bienvenido. Para ingresar, escriba su nombre.')
 let nombreUsuario = prompt(`Hola ${nombre}, por favor, cree su nombre de usuario.`)
 let password = prompt('Ahora cree una contraseña alfanumérica')
 
-alert(`Felicidades, ${nombre}, Su cuenta ha sido creada exitosamente. Inicie sesión para operar.`)
+alert(`Felicidades, ${nombre}. Su cuenta ha sido creada exitosamente. Inicie sesión para empezar a operar.`)
 
 do {
     usuario = prompt('Ingrese su nombre de usuario.')
@@ -151,13 +151,10 @@ function seleccionarOpcion() {
             return
         }
     } else if (menu == 4) {
-        for (producto of productosDeCanje) {
-            console.log(producto.info)
-        }
-        buscador = prompt('Para buscar un producto por categroía, escriba "celulares", "cocina", "hogar", "indumentaria", "tecnologia".')
+        buscador = prompt('Para buscar un producto por categoría, escriba "celulares", "cocina", "hogar", "indumentaria", "tecnologia".')
         let productosFiltrados = buscarPorCategoria(productosDeCanje, buscador)
         for (items of productosFiltrados) {
-            console.log(`**${items.info}**`)
+            console.log(`***${items.info}***`)
         }
         let respuesta = confirm('Desea volver al menú anterior?')
         if (respuesta) {
@@ -177,10 +174,10 @@ function seleccionarOpcion() {
             }
         }
         for (elementos in posiblesCanjes) {
-            let seleccion = prompt(`Para seleccionar el producto ${posiblesCanjes[elementos].info}, presiona ${elementos}. Tenés ${puntos}. Presioná "enter" para pasar al siguiente producto.`)
+            let seleccion = prompt(`Para seleccionar el producto ${posiblesCanjes[elementos].info}, presiona ${elementos}. Tenés ${puntos} puntos. Presioná "enter" para pasar al siguiente producto.`)
             if (seleccion == elementos) {
                 puntos -= posiblesCanjes[elementos].puntos
-                alert(`Felicidades! Has canjeado tus puntos por ${posiblesCanjes[elementos].info}. Tus puntos restantes son ${puntos}`)
+                alert(`Felicidades! Has canjeado tus puntos por ${posiblesCanjes[elementos].info}. Te quedan ${puntos} puntos.`)
                 posiblesCanjes = []
                 seleccionarOpcion()
             }
